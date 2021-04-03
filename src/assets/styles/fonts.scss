@@ -1,0 +1,54 @@
+/* ----------- Poppins ----------------- */
+  @font-face {
+    font-family: 'Poppins'; /* Global font */
+    src: url('../fonts/poppins/Poppins-Regular.eot?#iefix') format('embedded-opentype'), 
+    url('../fonts/poppins/Poppins-Regular.woff') format('woff'), 
+    url('../fonts/poppins/Poppins-Regular.otf')  format('truetype'),
+    url('../fonts/poppins/Poppins-Regular.svg#svgFontName') format('svg');
+  }
+  @font-face {
+    font-family: 'Poppins Light'; /* Global font */
+    src: url('../fonts/poppins/Poppins-Light.otf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Poppins Thin'; /* Global font */
+    src: url('../fonts/poppins/Poppins-Thin.otf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Poppins Medium'; /* Global font */
+    src: url('../fonts/poppins/Poppins-Medium.otf')  format('truetype');
+  }
+
+/* ----------- Open Sans ----------------- */
+  @font-face {
+    font-family: 'Open Sans'; /* Global font */
+    src: url('../fonts/open-sans/OpenSans-Regular.ttf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Open Sans Light'; /* Global font */
+    src: url('../fonts/open-sans/OpenSans-Light.ttf')  format('truetype');
+  }
+  @font-face {
+    font-family: 'Open Sans Medium'; /* Global font */
+    src: url('../fonts/open-sans/OpenSans-Bold.ttf')  format('truetype');
+  }
+
+
+/* ----------- Helvetica ----------------- */
+@font-face {
+  font-family: 'Helvetica'; /* Global font */
+  src: url('../fonts/helveticaneue/HelveticaNeue.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Helvetica Thin'; /* Global font */
+  src: url('../fonts/helveticaneue/HelveticaNeue Thin.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Helvetica Light'; /* Global font */
+  src: url('../fonts/helveticaneue/HelveticaNeue Light.ttf')  format('truetype');
+}
+@font-face {
+  font-family: 'Helvetica Medium'; /* Global font */
+  src: url('../fonts/helveticaneue/HelveticaNeue\ Medium.ttf')  format('truetype');
+}
+
