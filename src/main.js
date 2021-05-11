@@ -6,8 +6,10 @@ import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 import Viewer from 'v-viewer'
 import VueModal from '@kouts/vue-modal';
+import Vue2Filters from 'vue2-filters'
 // import VeeValidate from 'vee-validate';
-import * as VueGoogleMaps from 'vue2-google-maps'
+// import * as VueGoogleMaps from 'vue2-google-maps'
+
 // import './filters/index'
 
 
@@ -30,7 +32,10 @@ import {
   faEdit,
   faTrashAlt,
   faPlus,
+  faStar as fasStar,
+  faStarHalfAlt,
 } from '@fortawesome/free-solid-svg-icons'
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons'
 import { 
   faTwitter,
   faLinkedin,
@@ -52,6 +57,9 @@ library.add(
   faEdit,
   faTrashAlt,
   faPlus,
+  fasStar,
+  farStar,
+  faStarHalfAlt
 )
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -68,8 +76,8 @@ import './assets/styles/index.scss';
 
 
 const options = {
-  confirmButtonColor: '#0392CF',
-  cancelButtonColor: '#FF5959',
+  confirmButtonColor: '#476A9D',
+  cancelButtonColor: '#7c8aa0',
 };
 
 
@@ -81,16 +89,19 @@ Vue.use(VueSweetalert2,options);
 Vue.use(VueMoment);
 Vue.use(Viewer)
 Vue.use(VueModal)
+Vue.use(Vue2Filters);
 Vue.component('Modal', VueModal);
+
+Vue.mixin(Vue2Filters.mixin);
 // Vue.use(VeeValidate)
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyCkjWXef2lDguLgq1Pk9cUkWQd3ReWXXaQ',
-    libraries: 'places', // This is required if you use the Autocomplete plugin
-    // OR: libraries: 'places,drawing'
-    // OR: libraries: 'places,drawing,visualization'
-  },
-})
+// Vue.use(VueGoogleMaps, {
+//   load: {
+//     key: 'AIzaSyCkjWXef2lDguLgq1Pk9cUkWQd3ReWXXaQ',
+//     libraries: 'places,geometry', // This is required if you use the Autocomplete plugin
+//     // OR: libraries: 'places,drawing'
+//     // OR: libraries: 'places,drawing,visualization'
+//   },
+// })
 
 Vue.config.productionTip = false;
 Vue.router = router;
@@ -98,14 +109,11 @@ Vue.router = router;
 Vue.use(require('@websanova/vue-auth'), {
   auth: {
     request(req, token) {
-      console.log(req);
-      console.log(token);
       this.options.http._setHeaders.call(this, req, {
         Authorization: `Bearer ${token}`,
       })
     },
     response(res) {
-      console.log(res);
       var token = res.data.access_token;
       if (token) {
         // token = token.split(/Bearer\:?\s?/i) //eslint-disable-line
@@ -119,7 +127,7 @@ Vue.use(require('@websanova/vue-auth'), {
   loginData: {
     url: '/user/login',
     method: 'POST',
-    redirect: '/',
+    // redirect: '/',
   },
   authRedirect: { path: '/user/login' },
   tokenDefaultName: 'auth_token',

@@ -3,18 +3,29 @@
 		<div class="flex w-full h-full items-center">
 			<div class="w-2/12 px-4 text-c-fade-blue">
 				<svg 
-					v-if="headerOpt.pageName != 'Login' && headerOpt.pageName != 'Register'" 
-					class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					@click="toggleSidemenu(true)"
+					v-if="headerBtns.menu" 
+					class="w-6 hover:opacity-50" 
+					xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+
+				<svg 
+					@click="$router.go(-1)"
+					v-if="headerBtns.arrowleft"
+					class="w-6 hover:opacity-50" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
 				</svg>
 			</div>
 			<div class="w-8/12 text-center text-lg text-c-fade-blue font-bold">
-				{{ headerOpt.pageName ? headerOpt.pageName : 'Nearest' }}
+				{{ headerOpt.pageName ? headerOpt.pageName : routePage}}
 			</div>
 			<div class="w-2/12 px-4 text-right text-c-fade-blue">
 				<svg 
-					v-if="headerOpt.pageName != 'Login' && headerOpt.pageName != 'Register'" 
-					class="w-8 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+					v-if="headerBtns.settings" 
+					@click="$router.push({ name: 'Settings' })"
+					class="w-8 inline-block hover:opacity-50" 
+					xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
 					<path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
 				</svg>
 			</div>

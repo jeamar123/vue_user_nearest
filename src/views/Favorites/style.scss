@@ -1,0 +1,9 @@
+.favorites-container{
+  .favorites-content-container{
+    max-height: calc(100vh - 56px);
+
+    &::-webkit-scrollbar{
+      width: 0px;
+    }
+  }
+}

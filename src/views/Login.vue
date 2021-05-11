@@ -4,41 +4,37 @@
 
     <Header :headerOptions="{ pageName: 'Login' }"/>
 
-    <form @submit.prevent="login()" class="h-full lg:w-5/12 lg:mx-auto">
+    <form @submit.prevent="login()" class="h-full md:w-5/12 md:mx-auto px-2">
 
       <div class="img-container">
-        <svg class="w-5/12 my-5 mx-auto text-c-fade-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+        <svg class="w-3/12 my-5 mx-auto text-c-fade-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd" />
         </svg>
       </div>
 
-      <div class="input-div w-full bg-white flex mb-3 relative" :class="{'bg-red-100' : formErrors.indexOf('email') != -1}">
-        <label for="" class="text-c-fade-gray font-bold text-sm absolute top-3 left-2">
-          Email
-        </label>
+      <div class="input-div w-full bg-white flex mb-1 relative rounded" :class="{'bg-red-100' : formErrors.indexOf('email') != -1}">
         <input 
           type="text" 
           v-model="formData.email" 
           placeholder="Email"
-          class="text-right w-full h-full py-3 pr-3 pl-28 bg-transparent"
+          class="w-full h-full py-4 pr-3 pl-3 font-bold text-sm bg-transparent"
+          autocomplete="none"
         >
       </div>
 
-      <div class="input-div w-full bg-white flex mb-3 relative" :class="{'bg-red-100' : formErrors.indexOf('password') != -1}">
-        <label for="" class="text-c-fade-gray font-bold text-sm absolute top-3 left-2">
-          Password
-        </label>
+      <div class="input-div w-full bg-white flex mb-1 relative rounded" :class="{'bg-red-100' : formErrors.indexOf('password') != -1}">
         <input 
           type="password" 
           v-model="formData.password" 
           placeholder="Password"
-          class="text-right w-full h-full py-3 pr-3 pl-28 bg-transparent"
+          class="w-full h-full py-4 pr-3 pl-3 font-bold text-sm bg-transparent"
+          autocomplete="none"
         >
       </div>
 
-      <p v-for="list in errMsg" :key="list" class="my-2 text-red-400 text-center">{{ list }}</p>
+      <p v-for="list in errMsg" :key="list" class="my-2 text-red-400 font-bold text-center">{{ list }}</p>
 
-      <button type="submit" class="btn bg-c-primary text-center mt-5 py-3 px-4 text-c-fade-blue font-bold lg:w-full w-11/12 mx-auto block">Go</button>
+      <button type="submit" class="btn bg-c-primary text-center mt-8 py-3 px-4 text-c-fade-blue font-bold w-full mx-auto block">Go</button>
     </form>
   </div>
 </template>
@@ -102,12 +98,12 @@ export default {
         return false;
       }
       vm.toggleLoader(true);
-      // let redirect = vm.$auth.redirect()
+      let redirect = vm.$auth.redirect()
       vm.$auth
         .login({
-          data: vm.formData, // Axios
+          data: vm.formData, 
           rememberMe: true,
-          // redirect: redirect,
+          redirect: redirect,
           fetchUser: false,
           headers: {
             // 'Authorization': process.env.VUE_APP_AUTHORIZATION,
@@ -117,7 +113,7 @@ export default {
         .then(res => {
           console.log(res);
           if(res.data.status){
-            console.log(res);
+            vm.$router.push({ name: 'Home' });
           }else{
             vm.errMsg.push(res.data.message);
           }

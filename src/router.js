@@ -7,6 +7,10 @@ import VueAxios from 'vue-axios'
 import Login from './views/Login.vue'
 import Register from './views/Register.vue'
 import { Dashboard } from './views/Dashboard'
+import { Home } from './views/Home'
+import { Settings } from './views/Settings'
+import { ShopInfo } from './views/ShopInfo'
+import { Favorites } from './views/Favorites'
 
 
 Vue.use(Router)
@@ -25,11 +29,14 @@ export default new Router({
     {
       path: '/',
       name: 'Dashboard',
-      // redirect: '/users/all',
+      redirect: '/home',
       component: Dashboard,
       meta: { auth: true },
       children: [
-        // { name: 'Home', path: '/home', component: Home },
+        { name: 'Home', path: '/home', component: Home },
+        { name: 'Settings', path: '/settings', component: Settings },
+        { name: 'ShopInfo', path: '/shop-info/:id', component: ShopInfo },
+        { name: 'Favorites', path: '/favorites', component: Favorites },
       ]
     },
     

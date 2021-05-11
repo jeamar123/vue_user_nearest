@@ -8,7 +8,7 @@ module.exports = {
         'c-secondary' : '#476A9D',      
         'c-fade-blue' : '#C0D0E5',          
         'c-fade-gray' : '#7c7b7c',          
-        'loader' : '#000000cc',                 
+        'loader' : '#0000007d',                 
         'violet' : '#393C8E',             
       },
       fontSize: {
